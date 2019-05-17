@@ -3,6 +3,9 @@ const initialState = {
   current: {}
 }
 
-export const categoryReducer = (state = initialState, reducer) => {
-  return state
+export const categoryReducer = (state = initialState, {type, payload}) => {
+  switch(type){
+    default:
+      return state;
+  }
 }

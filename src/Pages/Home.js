@@ -14,6 +14,7 @@ class Home extends Component {
     return (
       <div className="homeWrapper">
         <HomeImages />
+        <h1>Trending Classes</h1>
         <CourseContainer />
       </div>
     )

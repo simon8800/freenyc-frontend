@@ -15,7 +15,7 @@ function App() {
       <div className="app">
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route path='/course/:id' render={props => <Course {...props} />} />
+          <Route path='/class/:id' render={props => <Course {...props} />} />
           <Route component={PageNotFound} />
         </Switch>
       </div>

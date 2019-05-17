@@ -1,5 +1,6 @@
 // React Stuff
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 // Semantic UI Stuff
 import { Card, Image } from 'semantic-ui-react'
@@ -7,14 +8,20 @@ import { Card, Image } from 'semantic-ui-react'
 // Redux Stuff
 import { connect } from 'react-redux'
 
+
 // Component Itself
-function CourseCard({ course }) {
+function CourseCard(props) {
+  
+  const handleClick = () => {
+    props.history.push(`/class/${props.course.id}`)
+  }
+
   return (
     <div className="courseCard">
       <Card>
-        <Card.Header>{course.title}</Card.Header>
-        <Image onClick={console.log} className="courseCardImage" src={course.images[Math.floor(Math.random() * course.images.length)].url} wrapped ui={false} />
-        <Card.Description>{course.description}</Card.Description>
+        <Card.Header>{props.course.title}</Card.Header>
+        <Image onClick={handleClick} className="courseCardImage" src={props.course.images[Math.floor(Math.random() * props.course.images.length)].url} wrapped ui={false} />
+        <Card.Description>{props.course.description}</Card.Description>
       </Card>
     </div>
   )
@@ -22,4 +29,4 @@ function CourseCard({ course }) {
 
 
 
-export default connect()(CourseCard);
+export default connect()(withRouter(CourseCard));

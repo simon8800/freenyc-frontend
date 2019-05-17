@@ -17,7 +17,7 @@ class CourseContainer extends Component {
   render() {
     return (
       <div className="courseContainer">
-        {this.props.courses.map(course => <CourseCard key={course.title} course={course}/>)}
+        {this.props.courses.map(course => <CourseCard course={course}/>)}
       </div>
     )
   }
