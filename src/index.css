@@ -8,3 +8,15 @@
 .navbar > span{
   margin-right: 20px;
 }
+
+.nav-links {
+  list-style: none;
+}
+
+input {
+  margin: 2px;
+}
+
+img {
+  width: 250px;
+}

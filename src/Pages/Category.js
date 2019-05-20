@@ -1,0 +1,43 @@
+// React stuff
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+
+// Redux stuff
+import { connect } from 'react-redux';
+import { fetchCategory } from '../redux/actions/categoryActions'
+
+// Component Stuff
+import CourseContainer from '../Containers/CourseContainer'
+
+class Category extends Component {
+  componentDidMount(){
+    this.props.fetchCategory(this.props.match.params.id)
+  }
+  
+  render() {
+    if (!parseInt(this.props.match.params.id) || parseInt(this.props.match.params.id) <= 0) {
+      return <Redirect to={{pathname:"/404"}}/>
+    }
+    let { category } = this.props
+    return (
+      <div className="categoryContainer">
+      <h1>{category.name}</h1>
+      {category.courses ? <CourseContainer courses={category.courses}/>:null}
+      </div>
+    )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    category: state.categories.current
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchCategory: (id) => dispatch(fetchCategory(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Category);

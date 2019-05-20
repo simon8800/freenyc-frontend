@@ -1,32 +1,19 @@
 // React Stuff
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-
-// Redux Stuff
-import { fetchCourses } from '../redux/actions/courseActions'
+import React, { Component } from "react";
 
 // Components Stuff
-import CourseCard from '../Components/CourseCard'
+import CourseCard from "../Components/CourseCard";
 
 // Component Itself
-class CourseContainer extends Component {
-
-  componentDidMount(){
-    this.props.fetchCourses()
-  }
-  render() {
-    return (
-      <div className="courseContainer">
-        {this.props.courses.map(course => <CourseCard course={course}/>)}
-      </div>
-    )
-  }
-}
+const CourseContainer = props => {
+  return (
+    <div className="courseContainer">
+      {props.courses.map(course => (
+        <CourseCard key={course.id} course={course} />
+      ))}
+    </div>
+  );
+};
 
 // Redux Connect
-const mapStateToProps = state => {
-  return {courses: state.courses.list}
-}
-
-
-export default connect(mapStateToProps, { fetchCourses })(CourseContainer);
+export default CourseContainer;

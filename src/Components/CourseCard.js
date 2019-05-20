@@ -20,13 +20,11 @@ function CourseCard(props) {
     <div className="courseCard">
       <Card>
         <Card.Header>{props.course.title}</Card.Header>
-        <Image onClick={handleClick} className="courseCardImage" src={props.course.images[Math.floor(Math.random() * props.course.images.length)].url} wrapped ui={false} />
-        <Card.Description>{props.course.description}</Card.Description>
+        <Image alt='hello there' onClick={handleClick} className="courseCardImage" src={props.course.images[Math.floor(Math.random() * props.course.images.length)].url} wrapped ui={false} />
+        <Card.Description>{props.course.short_description}</Card.Description>
       </Card>
     </div>
   )
 }
-
-
 
 export default connect()(withRouter(CourseCard));
