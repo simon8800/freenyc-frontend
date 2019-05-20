@@ -6,6 +6,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { reauthenticate } from './redux/actions/userActions'
 
+// Semantic UI
+import { Grid } from 'semantic-ui-react'
+
 // Components Stuff
 import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
@@ -26,22 +29,26 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <Navbar />
-        <div className="app">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/signup" component={SignUp} />
-            <Route path="/login" component={Login} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/class/:id" render={props => <Course {...props} />} />
-            <Route
-              path="/category/:id"
-              render={props => <Category {...props} />}
-            />
-            <Route component={PageNotFound} />
-          </Switch>
+        <Grid className="app" columns={1}>
+          <Grid.Row>
+            <Navbar />
+          </Grid.Row>
+          <Grid.Row>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/signup" component={SignUp} />
+                <Route path="/login" component={Login} />
+                <Route path="/profile" component={Profile} />
+                <Route path="/class/:id" render={props => <Course {...props} />} />
+                <Route
+                  path="/category/:id"
+                  render={props => <Category {...props} />}
+                />
+                <Route component={PageNotFound} />
+              </Switch>
+          </Grid.Row>
           <footer>Footer goes here.</footer>
-        </div>
+        </Grid>
       </BrowserRouter>
     );
   }

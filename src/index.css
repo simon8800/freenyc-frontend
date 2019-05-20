@@ -1,12 +1,9 @@
 /* Navbar */
-
+body{
+  font-family: 'PT Sans', sans-serif;
+}
 .navbar{
   background-color: #9F8CFF;
-  margin: 0;
-}
-
-.navbar > span{
-  margin-right: 20px;
 }
 
 .nav-links {
