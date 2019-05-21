@@ -37,6 +37,8 @@ export const userReducer = (state = initialState, {type, payload}) => {
         courses: payload.user.courses
       }
       return {...state, currentUser: authenticatedInfo}
+    case "SIGNOUT":
+      return initialState
     default:
       return state
   }

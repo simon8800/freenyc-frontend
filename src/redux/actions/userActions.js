@@ -55,3 +55,7 @@ export const reauthenticate = (token) => dispatch => {
     })
   })
 }
+
+export const signout = () => {
+  return {type:"SIGNOUT"}
+}
