@@ -1,13 +1,7 @@
 /* Navbar */
 body{
   font-family: 'PT Sans', sans-serif;
-}
-.navbar{
-  background-color: #9F8CFF;
-}
-
-.nav-links {
-  list-style: none;
+  background-color: rgb(133, 185, 206);
 }
 
 input {
@@ -16,4 +10,5 @@ input {
 
 img {
   width: 250px;
+  height: 160px;
 }

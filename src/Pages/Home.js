@@ -19,13 +19,11 @@ class Home extends Component {
   
   render() {
     return (
-      <Grid.Column className="homeWrapper">
-        <Grid>
-        <HomeImages />
-        <Header size='huge'>Trending Classes</Header>
-        {this.props.courses.length > 0 ? <CourseContainer courses={this.props.courses}/>:null}
-        </Grid>
-      </Grid.Column>
+      <React.Fragment>
+          <HomeImages />
+          <Header size='huge'>Trending Classes</Header>
+          {this.props.courses.length > 0 ? <CourseContainer courses={this.props.courses}/>:null}
+      </React.Fragment>
     )
   }
 }

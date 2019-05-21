@@ -1,6 +1,6 @@
 // React Stuff
 import React, { Component } from 'react'
-import { Link, NavLink, Redirect } from 'react-router-dom'
+import { Link, NavLink, Redirect, withRouter } from 'react-router-dom'
 
 // Redux Stuff
 import { connect } from 'react-redux'
@@ -17,10 +17,18 @@ class Navbar extends Component {
   state = {}
 
   handleItemClick = (e, { name }) => {
-    this.setState({ activeItem: name })
+    this.setState({ 
+      activeItem: name 
+    })
     switch(name) {
       case 'home':
-        return <Redirect to={{pathname:`/${name}`}}/>
+        this.props.history.push('/')
+      case 'login':
+        this.props.history.push('/login')
+      case 'signup':
+        this.props.history.push('signup')
+      default:
+        console.log('Easter Egg :)')
     }
   }
   
@@ -34,8 +42,8 @@ class Navbar extends Component {
     return (
       <Grid.Column>
         <Menu className="navbar">
-          <Menu.Item name='categories' active={activeItem === 'categories'} onClick={this.handleItemClick}>Categories</Menu.Item>
-          <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>Home</Menu.Item>
+          <Menu.Item link={true} name='categories' active={activeItem === 'categories'} onClick={this.handleItemClick}>Categories</Menu.Item>
+          <Menu.Item link={true} name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>Home</Menu.Item>
           <Menu.Item name='login' active={activeItem === 'login'} onClick={this.handleItemClick}>Login</Menu.Item>
           <Menu.Item name='signup' active={activeItem === 'signup'} onClick={this.handleItemClick}>Sign Up</Menu.Item>
         </Menu>
@@ -51,7 +59,7 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchCategories })(Navbar);
+export default connect(mapStateToProps, { fetchCategories })(withRouter(Navbar));
 
 /* <span>Category</span>
 <CategoryList categories={this.props.categories}/>

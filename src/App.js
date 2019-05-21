@@ -30,24 +30,26 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Grid className="app" columns={1}>
-          <Grid.Row>
+          <Grid.Column>
             <Navbar />
-          </Grid.Row>
-          <Grid.Row>
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/signup" component={SignUp} />
-                <Route path="/login" component={Login} />
-                <Route path="/profile" component={Profile} />
-                <Route path="/class/:id" render={props => <Course {...props} />} />
-                <Route
-                  path="/category/:id"
-                  render={props => <Category {...props} />}
-                />
-                <Route component={PageNotFound} />
-              </Switch>
-          </Grid.Row>
-          <footer>Footer goes here.</footer>
+          </Grid.Column>
+          <Grid.Column>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/signup" component={SignUp} />
+              <Route path="/login" component={Login} />
+              <Route path="/profile" component={Profile} />
+              <Route path="/class/:id" render={props => <Course {...props} />} />
+              <Route
+                path="/category/:id"
+                render={props => <Category {...props} />}
+              />
+              <Route component={PageNotFound} />
+            </Switch>
+          </Grid.Column>
+          <Grid.Column>
+            <footer>Footer goes here.</footer>
+          </Grid.Column>
         </Grid>
       </BrowserRouter>
     );

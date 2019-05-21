@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchCategory } from '../redux/actions/categoryActions'
 
+import { Grid, Header } from 'semantic-ui-react'
 // Component Stuff
 import CourseContainer from '../Containers/CourseContainer'
 
@@ -20,10 +21,10 @@ class Category extends Component {
     }
     let { category } = this.props
     return (
-      <div className="categoryContainer">
-      <h1>{category.name}</h1>
+      <Grid columns={1} className="categoryContainer">
+      <Grid.Column><Header size="huge">{category.name}</Header></Grid.Column>
       {category.courses ? <CourseContainer courses={category.courses}/>:null}
-      </div>
+      </Grid>
     )
   }
 }
