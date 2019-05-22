@@ -37,6 +37,14 @@ export const userReducer = (state = initialState, {type, payload}) => {
         courses: payload.user.courses
       }
       return {...state, currentUser: authenticatedInfo}
+    case "FETCH_PROFILE":
+        let leProfile = {
+          firstName: payload.user.f_name,
+          lastName: payload.user.l_name,
+          email: payload.user.email,
+          courses: payload.user.courses
+        }
+        return {...state, currentUser: leProfile}
     case "SIGNOUT":
       return initialState
     case "ADD_TO_FAVORITE":

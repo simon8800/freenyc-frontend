@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { fetchProfile } from '../redux/actions/userActions';
 
 import CourseContainer from '../Containers/CourseContainer'
 
 class Profile extends Component {
+
+  componentDidMount(){
+    let token = localStorage.getItem('token')
+    this.props.fetchProfile(token)
+  }
+  
+  
   render() {
     if (this.props.user === null) {
       return <Redirect to={{pathname:"/"}}/>
@@ -23,4 +31,4 @@ const mapStateToProps = state => {
   return {user: state.user.currentUser}
 }
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, {fetchProfile})(Profile);

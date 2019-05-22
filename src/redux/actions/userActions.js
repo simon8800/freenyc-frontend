@@ -36,6 +36,7 @@ export const login = (userInfo) => dispatch => {
   })
     .then(res => res.json())
     .then(user => {
+      debugger
       dispatch({type: "LOGIN", payload: user})
     })
 }
@@ -61,7 +62,6 @@ export const signout = () => {
 }
 
 export const addToFavorite = (course_id, email) => dispatch => {
-  console.log(course_id, email)
   fetch('http://localhost:3000/api/v1/favorites', {
     method:"POST",
     headers: {
@@ -74,7 +74,6 @@ export const addToFavorite = (course_id, email) => dispatch => {
   })
   .then(res => res.json())
   .then(userInfo => {
-    console.log(userInfo)
     dispatch({type: "ADD_TO_FAVORITE", payload: userInfo})
   })
 }
@@ -90,7 +89,24 @@ export const removeFavorite = (course_id, email) => dispatch => {
   })
     .then(res => res.json())
     .then(userInfo => {
-      console.log(userInfo)
       dispatch({type: "REMOVE_FAVORITE", payload: userInfo})
     })
 }
+
+export const fetchProfile = (token) => dispatch => {
+  fetch(`http://localhost:3000/api/v1/profile`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+  .then(res => res.json())
+  .then(user => {
+    dispatch({
+      type: "FETCH_PROFILE",
+      payload: user
+    })
+  })
+}
+
+
