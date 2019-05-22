@@ -7,37 +7,50 @@ import { Button, Icon } from 'semantic-ui-react'
 
 // Redux Stuff
 import { fetchCourse } from '../redux/actions/courseActions'
+import { addToFavorite, removeFavorite} from '../redux/actions/userActions'
 
 class Course extends Component {
 
   componentDidMount(){
     let id = parseInt(this.props.match.params.id)
     this.props.fetchCourse(id)
+    
   }
   
-  checkFavorite = () => {
-    let courses = this.props.user.courses
-    return courses.includes(this.props.course)
+  handleClick = (event) => {
+    let course_id = this.props.course.id
+    let email = this.props.user.email
+    if (event.target.innerText === 'Favorite') {
+      this.props.addToFavorite(course_id, email)
+    } else if (event.target.innerText === 'Favorited') {
+      this.props.removeFavorite(course_id, email)
+    }
   }
 
-  handleClick = () => {
-    debugger
+  buttonCreator = () => {
+    let checker;
+    this.props.user.courses.forEach(course => {
+      if (course.id === this.props.course.id) {
+        checker = true
+      }
+    })
+    if (checker){
+      return (<Button onClick={this.handleClick}><Icon name='heart'/>Favorited</Button>)
+    } else {
+      return (<Button onClick={this.handleClick}><Icon name="empty heart"/>Favorite</Button>)
+    }
   }
-
+  
   render() {
     if (!parseInt(this.props.match.params.id) || parseInt(this.props.match.params.id) <= 0) {
       return <Redirect to={{pathname:"/404"}}/>
     }
-    let { course } = this.props
     let { user } = this.props
-    let favorited = null
-    if (user) {
-      favorited = this.checkFavorite()
-    }
+    let { course } = this.props
     return (
       <div>
         <h1>{course.title}</h1>
-        {favorited ? (<Button onClick={this.handleClick}><Icon name='heart'/>Favorited</Button>):(<Button onClick={this.handleClick}><Icon name="empty heart"/>Favorite</Button>)}
+        {user ? this.buttonCreator():null}
         {course.images ? course.images.map(image => <img alt={image.description} src={image.url}></img>) : null}
         <p>Instructor: {course.instructor}</p>
         <p>{course.description}</p>
@@ -56,19 +69,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchCourse: (id)=>dispatch(fetchCourse(id))
+    fetchCourse: (id)=>dispatch(fetchCourse(id)),
+    addToFavorite: (course_id, email)=>dispatch(addToFavorite(course_id, email)),
+    removeFavorite: (course_id, email)=>dispatch(removeFavorite(course_id, email))
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Course)
 
-// fetch('http://localhost:3000/api/v1/favorites', {
-// 	method:"POST",
-// 	headers: {
-// 		"Content-Type":"application/json",
-// 		"Accept":"application/json"},
-// 	body: JSON.stringify({
-// 		user_id: 10,
-// 		course_id: 1
-// 	})
-// })

@@ -59,3 +59,38 @@ export const reauthenticate = (token) => dispatch => {
 export const signout = () => {
   return {type:"SIGNOUT"}
 }
+
+export const addToFavorite = (course_id, email) => dispatch => {
+  console.log(course_id, email)
+  fetch('http://localhost:3000/api/v1/favorites', {
+    method:"POST",
+    headers: {
+      "Content-Type":"application/json",
+      "Accept":"application/json"},
+    body: JSON.stringify({
+      email: email,
+      course_id: course_id
+    })
+  })
+  .then(res => res.json())
+  .then(userInfo => {
+    console.log(userInfo)
+    dispatch({type: "ADD_TO_FAVORITE", payload: userInfo})
+  })
+}
+
+export const removeFavorite = (course_id, email) => dispatch => {
+  fetch(`http://localhost:3000/api/v1/favorites`, {
+    method: "DELETE",
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({course_id: course_id, email: email})
+  })
+    .then(res => res.json())
+    .then(userInfo => {
+      console.log(userInfo)
+      dispatch({type: "REMOVE_FAVORITE", payload: userInfo})
+    })
+}

@@ -24,6 +24,7 @@ class Navbar extends Component {
   handleSignout = () => {
     localStorage.removeItem('token')
     this.props.signout()
+    this.setState({ activeItem: 'home'})
   }
   
   
@@ -37,7 +38,7 @@ class Navbar extends Component {
       <Grid.Column>
         <Menu className="navbar">
           <Menu.Item link={true} name='categories' active={activeItem === 'categories'} onClick={this.handleItemClick}>Categories</Menu.Item>
-          <Menu.Item as={Link} to='/' name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>Home</Menu.Item>
+          <Menu.Item as={Link} to='/' name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>FREENYC</Menu.Item>
           {localStorage.getItem('token') ? <Menu.Item name='profile' as={Link} to='/profile' active={activeItem === 'profile'} onClick={this.handleItemClick}>Profile</Menu.Item>:null}
           {localStorage.getItem('token') ? <Menu.Item name='signout' as={Link} to='/' active={activeItem === 'signout'} onClick={this.handleSignout}>Sign Out</Menu.Item>:null}
           {!localStorage.getItem('token') ? <Menu.Item name='login' as={Link} to='/login' active={activeItem === 'login'} onClick={this.handleItemClick}>Login</Menu.Item>:null}

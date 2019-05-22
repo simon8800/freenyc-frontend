@@ -39,6 +39,10 @@ export const userReducer = (state = initialState, {type, payload}) => {
       return {...state, currentUser: authenticatedInfo}
     case "SIGNOUT":
       return initialState
+    case "ADD_TO_FAVORITE":
+      return {...state, currentUser: {...state.currentUser, ...payload.user}}
+    case "REMOVE_FAVORITE":
+      return {...state, currentUser: {...state.currentUser, ...payload.user}}
     default:
       return state
   }
