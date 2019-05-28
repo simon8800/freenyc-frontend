@@ -1,6 +1,6 @@
 // React Stuff
 import React, { Component } from 'react';
-import { Link, NavLink, Redirect, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 // Redux Stuff
 import { connect } from 'react-redux';
@@ -11,7 +11,6 @@ import { signout } from '../redux/actions/userActions';
 import { Menu } from 'semantic-ui-react';
 
 // Components Stuff
-import CategoryList from '../Containers/CategoryList';
 import CategoryDropdown from './CategoryDropdown'
 
 // Actual Component

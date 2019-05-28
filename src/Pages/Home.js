@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { fetchCourses } from '../redux/actions/courseActions';
 
 // Semantic UI Stuff
-import { Grid, Header } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react';
 
 // Components Stuff
 import HomeImages from '../Containers/HomeImages';
@@ -20,6 +20,7 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
+          <h1>Try Something New for Free</h1>
           <HomeImages />
           <Header size='huge'>Trending Classes</Header>
           {this.props.courses.length > 0 ? <CourseContainer courses={this.props.courses}/>:null}

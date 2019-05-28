@@ -22,7 +22,7 @@ class Category extends Component {
     let { category } = this.props
     return (
       <Grid columns={1} className="categoryContainer">
-      <Grid.Column><Header size="huge">{category.name}</Header></Grid.Column>
+      <Grid.Column><h1>{category.name}</h1></Grid.Column>
       {category.courses ? <CourseContainer courses={category.courses}/>:null}
       </Grid>
     )

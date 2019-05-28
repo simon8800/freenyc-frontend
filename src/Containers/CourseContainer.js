@@ -12,7 +12,7 @@ const CourseContainer = props => {
   return (
     <Grid columns={3}>
       {props.courses.map(course => (
-        <Grid.Column><CourseCard key={course.id} course={course} /></Grid.Column>
+        <Grid.Column key={course.id}><CourseCard course={course} /></Grid.Column>
       ))}
     </Grid>
   );

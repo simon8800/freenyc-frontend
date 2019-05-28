@@ -6,9 +6,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { reauthenticate } from './redux/actions/userActions'
 
-// Semantic UI
-import { Grid } from 'semantic-ui-react'
-
 // Components Stuff
 import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";

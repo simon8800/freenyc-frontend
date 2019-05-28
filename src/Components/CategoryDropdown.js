@@ -6,19 +6,22 @@ import { connect } from 'react-redux'
 import { fetchCategory } from '../redux/actions/categoryActions'
 
 class CategoryDropdown extends React.Component {
-  handleChange = (event, data) => {
-    this.props.fetchCategory(data.value)
-    this.props.history.push(`/category/${data.value}`)
+  handleClick = (event) => {
+    let categoryId = event.target.dataset.categoryId
+    this.props.fetchCategory(categoryId)
+    this.props.history.push(`/category/${categoryId}`)
   }
   
   render() {
     let { categories } = this.props
-    let options = categories.map(category => {
-      return {key: category.id, text: category.name, value: category.id}
-    })
 
     return(
-      <Dropdown onChange={this.handleChange} text='Category' options={options} simple item />
+      // <Dropdown onChange={this.handleChange} text='Category' options={options} button simple item />
+      <Dropdown text='Category' item >
+        <Dropdown.Menu>
+          {categories.map(category => <Dropdown.Item onClick={this.handleClick} data-category-id={category.id} key={category.id}>{category.name}</Dropdown.Item>)}
+        </Dropdown.Menu>
+      </Dropdown>
     )
   }
 }

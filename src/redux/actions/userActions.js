@@ -1,5 +1,3 @@
-import { Redirect } from 'react-router-dom';
-
 export const signUp = (userInfo) => dispatch => {
   const user = {
     f_name: userInfo.firstName.toLowerCase(),

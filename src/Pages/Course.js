@@ -57,10 +57,10 @@ class Course extends Component {
       <div>
         <h1>{course.title}</h1>
         {user ? this.buttonCreator():null}
-        {course.images ? course.images.map(image => <img alt={image.description} src={image.url}></img>) : null}
+        {course.images ? course.images.map(image => <img key={image.id} className="course-image" alt={image.description} src={image.url}></img>) : null}
         <p>Instructor: {course.instructor}</p>
-        <p>{course.description}</p>
-        <a target="_blank" rel="noopener noreferrer" href={course.url}>Website</a>
+        <p>Description: {course.description}</p>
+        <p>Visit their <a target="_blank" rel="noopener noreferrer" href={course.url}>website here.</a></p>
         <Mapper />
       </div>
     )
