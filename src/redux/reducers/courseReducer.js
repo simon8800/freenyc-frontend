@@ -1,6 +1,8 @@
 const initialState = {
   list: [],
-  current: {}
+  current: {
+    addresses: [{lat:0, lng:0}]
+  }
 }
 
 export const courseReducer = (state = initialState, {type, payload}) => {

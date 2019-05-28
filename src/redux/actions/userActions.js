@@ -35,9 +35,12 @@ export const login = (userInfo) => dispatch => {
     body: JSON.stringify(user)
   })
     .then(res => res.json())
-    .then(user => {
-      debugger
-      dispatch({type: "LOGIN", payload: user})
+    .then(data => {
+      if (data.error) {
+        alert(data.error)
+      } else {
+        dispatch({type: "LOGIN", payload: data})
+      }
     })
 }
 

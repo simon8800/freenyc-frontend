@@ -29,11 +29,10 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <Grid className="app" columns={1}>
-          <Grid.Column>
+          <div>
             <Navbar />
-          </Grid.Column>
-          <Grid.Column>
+          </div>
+          <div>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/signup" component={SignUp} />
@@ -46,11 +45,8 @@ class App extends React.Component {
               />
               <Route component={PageNotFound} />
             </Switch>
-          </Grid.Column>
-          <Grid.Column>
+          </div>
             <footer>Footer goes here.</footer>
-          </Grid.Column>
-        </Grid>
       </BrowserRouter>
     );
   }

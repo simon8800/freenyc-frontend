@@ -21,6 +21,7 @@ class Profile extends Component {
     return (
       <div>
         <h1>Welcome {`${user.firstName[0].toUpperCase() + user.firstName.slice(1)}`}</h1>
+        <h2>Favorited Classes</h2>
         <CourseContainer courses={user.courses}/>
       </div>
     )

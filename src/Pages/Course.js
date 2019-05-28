@@ -9,12 +9,18 @@ import { Button, Icon } from 'semantic-ui-react'
 import { fetchCourse } from '../redux/actions/courseActions'
 import { addToFavorite, removeFavorite} from '../redux/actions/userActions'
 
+// Components and Stuff
+import Mapper from '../Components/Mapper'
+
 class Course extends Component {
+
+  state = {
+    addresses: null
+  }
 
   componentDidMount(){
     let id = parseInt(this.props.match.params.id)
     this.props.fetchCourse(id)
-    
   }
   
   handleClick = (event) => {
@@ -55,6 +61,7 @@ class Course extends Component {
         <p>Instructor: {course.instructor}</p>
         <p>{course.description}</p>
         <a target="_blank" rel="noopener noreferrer" href={course.url}>Website</a>
+        <Mapper />
       </div>
     )
   }
