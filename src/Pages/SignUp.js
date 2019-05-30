@@ -42,9 +42,9 @@ class SignUp extends Component {
         } else {
           this.props.signUp(user)
           localStorage.setItem('token', user.jwt)
+          .then(() => this.props.history.push('/'))
         }
       })
-      .then(() => this.props.history.push('/'))
   }
 
   render() {

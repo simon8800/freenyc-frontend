@@ -11,6 +11,7 @@ import { addToFavorite, removeFavorite} from '../redux/actions/userActions'
 
 // Components and Stuff
 import Mapper from '../Components/Mapper'
+import CommentContainer from '../Containers/CommentContainer'
 
 class Course extends Component {
 
@@ -62,6 +63,7 @@ class Course extends Component {
         <p>Description: {course.description}</p>
         <p>Visit their <a target="_blank" rel="noopener noreferrer" href={course.url}>website here.</a></p>
         <Mapper />
+        <CommentContainer />
       </div>
     )
   }
