@@ -21,8 +21,30 @@ class SignUp extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.signUp(this.state)
-    this.props.history.push('/profile')
+    const user = {
+      f_name: this.state.firstName.toLowerCase(),
+      l_name: this.state.lastName.toLowerCase(),
+      email: this.state.email.toLowerCase(),
+      password: this.state.password
+    }
+    fetch(`http://localhost:3000/api/v1/users`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(user => {
+        if (user.error) {
+          alert(user.error)
+        } else {
+          this.props.signUp(user)
+          localStorage.setItem('token', user.jwt)
+        }
+      })
+      .then(() => this.props.history.push('/'))
   }
 
   render() {
@@ -31,7 +53,7 @@ class SignUp extends Component {
     }
     return (
       <div>
-        <h1>Join NYC in Discovering New Hobbies for Free</h1>
+        <h1>Join New Yorkers in Discovering New Hobbies for Free</h1>
         <form onSubmit={this.handleSubmit} autoComplete="off">
           <input onChange={this.handleChange} value={this.state.firstName} name="firstName" type="text" placeholder="First Name"></input>
           <input onChange={this.handleChange} value={this.state.lastName} name="lastName" type="text" placeholder="Last Name"></input><br/>

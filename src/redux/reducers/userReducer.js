@@ -12,7 +12,6 @@ export const userReducer = (state = initialState, {type, payload}) => {
         email: payload.user.email,
         courses: payload.user.courses
       }
-      localStorage.setItem('token', payload.jwt)
       return {
         currentUser: {...signupInfo}, 
         token:payload.jwt, 

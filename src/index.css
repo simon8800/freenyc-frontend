@@ -11,6 +11,10 @@ h1 {
   height: 200px;
 }
 
+.favorite {
+  float: right;
+}
+
 #map{
   height: 400px;
   width: 400px;

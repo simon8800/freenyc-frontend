@@ -43,7 +43,6 @@ class App extends React.Component {
               <Route component={PageNotFound} />
             </Switch>
           </div>
-            <footer>Footer goes here.</footer>
       </BrowserRouter>
     );
   }

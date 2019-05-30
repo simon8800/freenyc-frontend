@@ -1,22 +1,5 @@
-export const signUp = (userInfo) => dispatch => {
-  const user = {
-    f_name: userInfo.firstName.toLowerCase(),
-    l_name: userInfo.lastName.toLowerCase(),
-    email: userInfo.email.toLowerCase(),
-    password: userInfo.password
-  }
-  fetch(`http://localhost:3000/api/v1/users`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify(user)
-  })
-    .then(res => res.json())
-    .then(user => {
-      dispatch({type: "SIGNUP", payload: user})
-    })
+export const signUp = (userInfo) => {
+  return {type: "SIGNUP", payload: userInfo}
 }
 
 export const login = (userInfo) => dispatch => {

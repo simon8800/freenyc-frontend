@@ -7,6 +7,14 @@ class Mapper extends Component {
     zoom: 13
   };
 
+  openPopup (marker) {
+    if (marker && marker.leafletElement) {
+      window.setTimeout(() => {
+        marker.leafletElement.openPopup()
+      })
+    }
+  }
+
   getFirstAddressLatLng = () => {
     let lat = this.props.course.addresses[0].lat;
     let lng = this.props.course.addresses[0].lng;
@@ -21,8 +29,6 @@ class Mapper extends Component {
   };
 
   render() {
-    // const position = [this.props.address.lat, this.props.address.lng]
-    // let { address } = this.props
     return (
       <Map
         style={{ height: "500px", width: "500px" }}
@@ -38,7 +44,7 @@ class Mapper extends Component {
         />
         {this.props.course.addresses.map(address => {
           return (
-            <Marker key={address.id} position={[address.lat, address.lng]}>
+            <Marker key={address.id} position={[address.lat, address.lng]} ref={this.openPopup}>
               <Popup>
                 {`${address.address_first} ${address.address_second} ${
                   address.city

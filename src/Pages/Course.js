@@ -41,9 +41,9 @@ class Course extends Component {
       }
     })
     if (checker){
-      return (<Button onClick={this.handleClick}><Icon name='heart'/>Favorited</Button>)
+      return (<Button className="favorite" onClick={this.handleClick}><Icon name='heart'/>Favorited</Button>)
     } else {
-      return (<Button onClick={this.handleClick}><Icon name="empty heart"/>Favorite</Button>)
+      return (<Button className="favorite" onClick={this.handleClick}><Icon name="empty heart"/>Favorite</Button>)
     }
   }
   

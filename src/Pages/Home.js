@@ -20,7 +20,7 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
-          <h1>Try Something New for Free</h1>
+          <h1>Explore New Hobbies for Free</h1>
           <HomeImages />
           <Header size='huge'>Trending Classes</Header>
           {this.props.courses.length > 0 ? <CourseContainer courses={this.props.courses}/>:null}

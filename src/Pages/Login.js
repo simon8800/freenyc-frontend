@@ -29,7 +29,7 @@ class Login extends Component {
     }
     return (
       <div>
-        <h1>Some Friendly Message for Coming Back.</h1>
+        <h1>Welcome Back!</h1>
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.handleChange}name="email" type="email" placeholder="Email"></input><br/>
           <input onChange={this.handleChange}name="password" type="password" placeholder="Password"></input><br/>

@@ -11,6 +11,15 @@ class Profile extends Component {
     let token = localStorage.getItem('token')
     this.props.fetchProfile(token)
   }
+
+  buildHeader = () => {
+    let { user } = this.props
+    if (user.firstName) {
+      return <h1>Welcome {`${user.firstName[0].toUpperCase() + user.firstName.slice(1)}`}</h1>
+    } else {
+      return <h1>Welcome Person With No Name... 🤨🤨🤨</h1>
+    }
+  }
   
   
   render() {
@@ -20,8 +29,8 @@ class Profile extends Component {
     let {user} = this.props
     return (
       <div>
-        <h1>Welcome {`${user.firstName[0].toUpperCase() + user.firstName.slice(1)}`}</h1>
-        <h2>Favorited Classes</h2>
+        {this.buildHeader()}
+        <h2>Here Are Your Favorited Classes</h2>
         <CourseContainer courses={user.courses}/>
       </div>
     )
