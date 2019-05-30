@@ -31,7 +31,7 @@ class Profile extends Component {
       <div>
         {this.buildHeader()}
         <h2>Here Are Your Favorited Classes</h2>
-        <CourseContainer courses={user.courses}/>
+        {user.courses.length > 0 ? <CourseContainer courses={user.courses}/>: <h3>You Don't Have Any Right Now. Go Favorite Some Classes!</h3>}
       </div>
     )
   }

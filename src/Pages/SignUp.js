@@ -42,7 +42,7 @@ class SignUp extends Component {
         } else {
           this.props.signUp(user)
           localStorage.setItem('token', user.jwt)
-          .then(() => this.props.history.push('/'))
+          this.props.history.push('/')
         }
       })
   }
@@ -55,8 +55,8 @@ class SignUp extends Component {
       <div>
         <h1>Join New Yorkers in Discovering New Hobbies for Free</h1>
         <form onSubmit={this.handleSubmit} autoComplete="off">
-          <input onChange={this.handleChange} value={this.state.firstName} name="firstName" type="text" placeholder="First Name"></input>
-          <input onChange={this.handleChange} value={this.state.lastName} name="lastName" type="text" placeholder="Last Name"></input><br/>
+          <input required onChange={this.handleChange} value={this.state.firstName} name="firstName" type="text" placeholder="First Name"></input>
+          <input required onChange={this.handleChange} value={this.state.lastName} name="lastName" type="text" placeholder="Last Name"></input><br/>
           <input required onChange={this.handleChange} value={this.state.email} name="email" type="email" placeholder="Email"></input><br/>
           <input required onChange={this.handleChange} value={this.state.password} name="password" type="password" placeholder="New Password"></input><br/>
           <input type="submit" value="Sign Up"></input>

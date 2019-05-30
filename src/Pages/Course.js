@@ -49,7 +49,7 @@ class Course extends Component {
   }
   
   render() {
-    if (!parseInt(this.props.match.params.id) || parseInt(this.props.match.params.id) <= 0) {
+    if (!parseInt(this.props.match.params.id) || parseInt(this.props.match.params.id) <= 0 || parseInt(this.props.match.params.id) >= 9) {
       return <Redirect to={{pathname:"/404"}}/>
     }
     let { user } = this.props

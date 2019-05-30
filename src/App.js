@@ -15,6 +15,7 @@ import PageNotFound from "./Pages/PageNotFound";
 import SignUp from "./Pages/SignUp";
 import Login from "./Pages/Login";
 import Profile from "./Pages/Profile";
+import GoodTime from "./Pages/GoodTime";
 
 class App extends React.Component {
   componentDidMount() {
@@ -35,6 +36,7 @@ class App extends React.Component {
               <Route path="/signup" component={SignUp} />
               <Route path="/login" component={Login} />
               <Route path="/profile" component={Profile} />
+              <Route path="/goodtime" component={GoodTime} />
               <Route path="/class/:id" render={props => <Course {...props} />} />
               <Route
                 path="/category/:id"

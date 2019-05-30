@@ -16,7 +16,7 @@ class Category extends Component {
   }
   
   render() {
-    if (!parseInt(this.props.match.params.id) || parseInt(this.props.match.params.id) <= 0) {
+    if (!parseInt(this.props.match.params.id) || parseInt(this.props.match.params.id) <= 0 || parseInt(this.props.match.params.id) >= 6) {
       return <Redirect to={{pathname:"/404"}}/>
     }
     let { category } = this.props

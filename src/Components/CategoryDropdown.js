@@ -11,7 +11,11 @@ class CategoryDropdown extends React.Component {
     this.props.fetchCategory(categoryId)
     this.props.history.push(`/category/${categoryId}`)
   }
-  
+
+  goodTime = () => {
+    this.props.history.push(`/goodtime`)
+  }  
+
   render() {
     let { categories } = this.props
 
@@ -20,6 +24,7 @@ class CategoryDropdown extends React.Component {
       <Dropdown text='Category' item >
         <Dropdown.Menu>
           {categories.map(category => <Dropdown.Item onClick={this.handleClick} data-category-id={category.id} key={category.id}>{category.name}</Dropdown.Item>)}
+          <Dropdown.Item onClick={this.goodTime}>Click Here for a Good Time</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     )

@@ -31,7 +31,7 @@ class Mapper extends Component {
   render() {
     return (
       <Map
-        style={{ height: "500px", width: "500px" }}
+        style={{ height: "500px", width: "500px", float: "right" }}
         center={this.getFirstAddressLatLng()}
         zoom={this.state.zoom}
       >

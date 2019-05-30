@@ -20,3 +20,15 @@ export const fetchCourse = (id) => dispatch => {
       })
     })
 }
+
+export const newComment = (comment) => {
+  return {type: "NEW_COMMENT", payload: comment}
+}
+
+export const editComment = (newComment) => {
+  return {type: "EDIT_COMMENT", payload: newComment}
+}
+
+export const deleteComment = (deletedComment) => {
+  return {type: "DELETE_COMMENT", payload: deletedComment}
+}
