@@ -27,7 +27,7 @@ export const courseReducer = (state = initialState, {type, payload}) => {
       })
       return {...state, current: {...state.current, comments: newComments }};
     case 'DELETE_COMMENT':
-      newComments = state.current.comments.filter(comment => comment.id != payload.id)
+      newComments = state.current.comments.filter(comment => comment.id !== payload.id)
       return {...state, current: {...state.current, comments: newComments }};
     default:
       return state;

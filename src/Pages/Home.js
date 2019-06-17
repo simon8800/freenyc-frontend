@@ -22,7 +22,7 @@ class Home extends Component {
       <React.Fragment>
           <h1>Explore New Hobbies for Free</h1>
           <HomeImages />
-          <Header size='huge'>Trending Classes</Header>
+          <Header size='huge'>All Classes</Header>
           {this.props.courses.length > 0 ? <CourseContainer courses={this.props.courses}/>:null}
       </React.Fragment>
     )
@@ -30,7 +30,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => {
-  return {courses: state.courses.list.slice(0,3)}
+  return {courses: state.courses.list}
 }
 
 export default connect(mapStateToProps, { fetchCourses })(Home);
