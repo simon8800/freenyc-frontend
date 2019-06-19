@@ -38,9 +38,7 @@ class Mapper extends Component {
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          accessToken={
-            "pk.eyJ1IjoicGVpZGFuc2F1eXVranVrIiwiYSI6ImNqdnpuczVoczAyOWk0OXF2ZTRhMWt3YjcifQ.JytgGvNkoGKnbHF7T6ajHw"
-          }
+          accessToken={process.env.REACT_APP_MAPPER_API_KEY}
         />
         {this.props.course.addresses.map(address => {
           return (
