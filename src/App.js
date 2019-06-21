@@ -1,53 +1,51 @@
 // React Stuff
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-
-// Redux Stuff
-import { connect } from "react-redux";
-import { reauthenticate } from './redux/actions/userActions'
-
-// Components Stuff
-import Navbar from "./Components/Navbar";
-import Home from "./Pages/Home";
-import Course from "./Pages/Course";
-import Category from "./Pages/Category";
-import PageNotFound from "./Pages/PageNotFound";
-import SignUp from "./Pages/SignUp";
-import Login from "./Pages/Login";
-import Profile from "./Pages/Profile";
-import GoodTime from "./Pages/GoodTime";
+import Typist from "react-typist";
+import "./App.css";
 
 class App extends React.Component {
-  componentDidMount() {
-    if (localStorage.getItem('token')){
-      this.props.reauthenticate(localStorage.getItem('token'))
-    }
-  }
+  state = {
+    typing: true
+  };
+
+  done = () => {
+    this.setState({ typing: false }, () => {
+      this.setState({ typing: true });
+    });
+  };
 
   render() {
+    let typedWords = [
+      "Martial Arts",
+      "Dancing",
+      "Programming",
+      "Writing",
+      "Knitting",
+      "Arts & Crafts",
+      "Yoga",
+      "Meditation"
+    ];
     return (
-      <BrowserRouter>
-          <div>
-            <Navbar />
-          </div>
-          <div>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/signup" component={SignUp} />
-              <Route path="/login" component={Login} />
-              <Route path="/profile" component={Profile} />
-              <Route path="/goodtime" component={GoodTime} />
-              <Route path="/class/:id" render={props => <Course {...props} />} />
-              <Route
-                path="/category/:id"
-                render={props => <Category {...props} />}
-              />
-              <Route component={PageNotFound} />
-            </Switch>
-          </div>
-      </BrowserRouter>
+      <div className="app">
+        <div className="hero-textbox">
+          <h2>
+            I want to learn
+            {this.state.typing ? (
+              <Typist startDelay={1000} onTypingDone={this.done}>
+                {typedWords.map(word => (
+                  <span>
+                    <span key={word}>{word}</span>
+                    <Typist.Backspace count={word.length} delay={500} />
+                    <Typist.Delay ms={1000} />
+                  </span>
+                ))}
+              </Typist>
+            ) : null}
+          </h2>
+        </div>
+      </div>
     );
   }
 }
 
-export default connect(null, { reauthenticate })(App);
+export default App;
