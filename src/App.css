@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.hero-textbox {
+  background-image: linear-gradient(#eeeeee5d, #eeeeee5d) ,url('./images/newyork-skyline.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.hero-textbox h1 {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 550%;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+}
+
+.hero-textbox h2 {
+  margin: 40px auto;
+  font-weight: 300;
+  font-size: 500%;
+  color: #000;
+}
+
+
+@media(min-width: 1200px) {
+  .hero-textbox h2 {
+    font-size: 300%;
+  }
+}
+
+@media(max-width: 800px) {
+  .hero-textbox h1 {
+    font-size: 300%;
+  }
+  
+  .hero-textbox h2 {
+    font-size: 250%;
+  }
+
+
+}
