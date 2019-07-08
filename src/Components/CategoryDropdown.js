@@ -24,7 +24,6 @@ class CategoryDropdown extends React.Component {
       <Dropdown text='Category' item >
         <Dropdown.Menu>
           {categories.map(category => <Dropdown.Item onClick={this.handleClick} data-category-id={category.id} key={category.id}>{category.name}</Dropdown.Item>)}
-          <Dropdown.Item onClick={this.goodTime}>Click Here for a Good Time</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     )

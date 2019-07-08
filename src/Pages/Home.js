@@ -22,7 +22,7 @@ class Home extends Component {
       <React.Fragment>
           <h1>Explore New Hobbies for Free</h1>
           <HomeImages />
-          <Header size='huge'>All Classes</Header>
+          <Header size='huge'>FEATURED CLASSES</Header>
           {this.props.courses.length > 0 ? <CourseContainer courses={this.props.courses}/>:null}
       </React.Fragment>
     )
